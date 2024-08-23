@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JobScrapper - {{ keyword }}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <style>
+    body {
+      background-color: #EDF2F7; 
+      color: #2D3748;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header,
+    footer {
+      background-color: #38B2AC; 
+      color: #EDF2F7; 
+      padding: 16px;
+      text-align: center;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 5px; 
+      flex: 1px;
+      position: relative;
+    }
+
+    .export-button {
+      position: absolute;
+      top: 20px; 
+      right: 150px;
+    }
+    .export-button a {
+      color: white;
+      text-decoration: none;
+    }
+    .export-button a:hover {
+      color: #005F3D; 
+      text-decoration: underline;
+    }
+
+    button {
+      background-color: #48BB78;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #38A169;
+    }
+
+    a {
+      color: #3182CE; 
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: #005F3D; 
+    }
+
+    h1 {
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      max-width: max-content; 
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #38B2AC;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #E2E8F0;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #EDF2F7;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .pagination a {
+      padding: 10px 15px;
+      margin: 0 5px;
+      background-color: #48BB78;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .pagination a:hover {
+      background-color: #38A169;
+    }
+
+    .pagination span {
+      margin: 0 10px;
+      font-weight: bold;
+    }
+    .yejun{
+      color: black;
+      text-decoration: none;
+    }
+    .yejun:hover{
+      color: white;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Job Scrapper</h1>
+  </header>
+  <main class="container">
+    <button class="export-button"><a href="/export?keyword={{ keyword }}" class="button" target="_blank">Export to file</a></button>
+    <h1>Jobs that use "{{ keyword }}":</h1>
+    <figure>
+      <table role="grid" class="striped">
+        <thead>
+          <tr>
+            <th>Position</th>
+            <th>Company</th>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for job in jobs %}
+          <tr>
+            <td>{{ job.title }}</td>
+            <td>{{ job.company }}</td>
+            <td><a href="{{ job.link }}" target="_blank">More.. &rarr;</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </figure>
+    <div class="pagination">
+      {% if page > 1 %}
+        <a href="{{ url_for('search', keyword=keyword, page=page-1) }}">Previous</a>
+      {% endif %}
+      <span>Page {{ page }} of {{ total_pages }}</span>
+      {% if page < total_pages %}
+        <a href="{{ url_for('search', keyword=keyword, page=page+1) }}">Next</a>
+      {% endif %}
+    </div>
+  </main>
+  <footer>
+    <p>© 2024 made by.<a href="https://github.com/yjuni0" class= "yejun" target="_blank">yjuni0</a></p>
+  </footer>
+</body>
+
+</html>

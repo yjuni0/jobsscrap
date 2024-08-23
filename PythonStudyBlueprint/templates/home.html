@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Scrapper</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <style>
+    body {
+      background-color: #EDF2F7;
+      color: #2D3748;
+    }
+    header, footer {
+      background-color: #38B2AC;
+      color: white;
+      padding: 16px;
+      text-align: center;
+    }
+    h1 {
+      text-align: center;
+      color: #2D3748;
+    }
+    h4 {
+      text-align: center;
+      color: #2D3748;
+      margin-bottom: 32px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    input[type="text"] {
+      width: 50%;
+      padding: 12px;
+      border: 1px solid #CBD5E0;
+      border-radius: 5px;
+      margin-bottom: 16px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #48BB78;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #38A169;
+    }
+    .yejun{
+      color: black;
+      text-decoration: none;
+      hover: white;
+    }
+    .yejun:hover{
+      color: white;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Welcome to Job Scrapper</h1>
+  </header>
+  <main class="container">
+    <h4>What job do you want?</h4>
+    <form action="/search">
+      <input type="text" name="keyword" placeholder="Write keyword please" />
+      <button>Search</button>
+    </form>
+  </main>
+  <footer>
+    <p>© 2024 made by.<a href="https://github.com/yjuni0" class= "yejun" target="_blank">yjuni0</a></p>
+  </footer>
+</body>
+
+</html>
